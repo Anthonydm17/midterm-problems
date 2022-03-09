@@ -1,5 +1,5 @@
 
-// true if first number is even div by second
+//###EVENLY DIVISIBLE
 function isEvenlyDivisible(num1, num2) {
   if (num1 % num2 == 0){
     return true
@@ -7,14 +7,13 @@ function isEvenlyDivisible(num1, num2) {
 }
 
 
-// returns squared number divided by 2
+//###HALF SQUARE
 
 function halfSquare(num) {
   return (num * num) / 2
 }
 
-// return true if string is longer then 15 characters - false if not
-// if 15 exactly = true
+// ###IS LONG
 
 function isLong(str) {
   if (str.length >= 15){
@@ -22,23 +21,22 @@ function isLong(str) {
   }else return false
 }
 
-// return string with "!"
-// if it has "!" return unchanged 
-// if multiples, return with 1 "!"
+// ###EXCLAIM
 
 function exclaim(str) {
 let x = str.replace(/!.?/g,"")
 return x + "!"
 }
 
-// returns count of words with spaces in between
+//###COUNT WORDS
+
 function countWords(str) {
 let arr = str.split(" ");
 return arr.length
 }
 
 
-// returns true if contains digits, false if none
+//###CONTAINS DIGIT
 
 function containsDigit(str) {
 let digits = "1234567890";
@@ -50,7 +48,7 @@ for (let i = 0; i < str.length; i++){
 return false
 }
 
-// returns true if string contains lowercase and false if not
+//###CONTAINS LOWERCASE
 
 function containsLowerCase(str) {
 let lower = "abcdefghijklmnopqrstuvwxyz";
@@ -62,7 +60,7 @@ for (let i=0; i < str.length; i++){
 return false
 }
 
-// returns true if string contains uppercase and false if not
+//###CONTAINS UPPERCASE
 
 function containsUpperCase(str) {
   let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -75,6 +73,7 @@ function containsUpperCase(str) {
   }
 
 
+//###CONTAINS NON ALPHANUMERIC
 
 function containsNonAlphanumeric(str) {
 let alphas = " !@#$%^&*()-_=+,.<>/?';: "
@@ -87,9 +86,7 @@ return false
 }
 
 
-// can determine that a string with only spaces contains at least one space
-// can determine that a string with only letters does not contain any spaces
-// can determine that a string with only digits does not contain any non-alphanumeric characters
+//###CONTAINS SPACE
 
 function containsSpace(str) {
   let space = " ";
@@ -107,12 +104,19 @@ return false
 // can turn a floating point number into an array of its digits, ignoring the decimal point
 
 function digits(str) {
+let digits = "0123456789";
+let arr = [];
+let x = str.toString();
 
+for (let i = 0; i < x.length; i++){
+  if (digits.includes(x[i])){
+    arr.push(Number(x[i]))
+  }
+}
+return arr
 }
 
-
-// shortens 15 or more to 8 characters and "..."
-// returns string with less then 15 characters without any changes
+//###TRUNCATE
 
 function truncate(str) {
   let x = str.slice(0,8) + "...";
@@ -124,15 +128,10 @@ function truncate(str) {
 
 
 
-// returns false if there are no uppercase characters in the given string
-// returns false if there are no lowercase characters in the given string
-// returns false if there are no digits in the given string
-// returns false if there are no non-alphanumeric characters in the given string`, () => {
-// returns false if there are any spaces in the given string
+//###VALID PASSWORD
 
 function isValidPassword(str) {
   // MUST CONTAIN
-
     let lower = "abcdefghijklmnopqrstuvwxyz";
     let upper = lower.toUpperCase();
     let digits = "1234567890";
@@ -144,9 +143,9 @@ let upperBool = false;
 let digitsBool = false;
 let alphasBool = false;
 let spaceBool = false;
-
+// BOOLEAN FOR FINAL CHECK
 let x = true;
-
+// BOOLEAN CHECKS
     for (let i = 0; i < str.length; i++){
     if (lower.includes(str[i])){
       lowerBool = true;
@@ -171,6 +170,7 @@ let x = true;
             if (space.includes(str[i])){
               spaceBool = true;
             }  
+// FINAL CHECKS
 }if (lowerBool == true && upperBool == true && digitsBool == true && alphasBool == true){
   x = true
 }if (lowerBool == false || upperBool == false || digitsBool == false || alphasBool == false){
@@ -182,28 +182,19 @@ return x
 }
     
   
+//###ONLY PUNCHY
 
+function onlyPunchy(arr) {
+let x = []
 
-
-    
-
-
-// // CANT CONTAIN
-// let space = " "
-
-// for (let i=0; i < str.length;i++){
-//  if (space.includes(str[i])){
-//     return false
-//   }else if (lower.includes(str[i]) && upper.includes(str[i]) && digits.includes(str[i]) && alphas.includes(str[i])){
-//     return true
-//   }
-// }
-// return false
-// }
-
-function onlyPunchy() {
+for (let i = 0; i < arr.length; i++){
+  let check = arr[i].replace(/!/g, "");
+  if(check.length < 15){
+    x.push(check + "!")
 }
-
+}
+return x
+}
 
 module.exports = {
   isEvenlyDivisible,
